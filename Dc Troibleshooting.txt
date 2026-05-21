@@ -1,0 +1,39 @@
+ipconfig /flushdns
+ipconfig /registerdns
+arp -d *
+net stop netlogon
+net start netlogon
+
+
+=====
+
+
+Repadmin /replsummary
+Repadmin /Queue
+Repadmin /Showrepl
+Repadmin /syncall
+Repadmin /KCC
+Repadmin /replicate
+=================
+Gpresult
+gpresult /z
+
+=====================
+Dcgpofix /target:domain
+
+=======================
+net stop w32time
+w32time –update
+net start w32time
+
+===============
+nltest /dclist:reliancegio.com
+
+nltest /dcname:reliancegio.com
+
+nltest /user:"Administrator"
+
+Nltest /dsgetdc:reliancegio.com
+=======================
+Set -l 
+Klist tgt | more
